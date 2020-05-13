@@ -51,7 +51,7 @@ storyItem .add(new StoryItem.Video("LinkVideo","AvatarJournal","NameJournal","Ti
 
        // ici On a 2 Version Soit l'arabe ou francais 
        
-       si tu veut utiliser le francais donc il faut utiliser la classe SnrtNewsStoryFr: 
+      // si tu veut utiliser le francais donc il faut utiliser la classe SnrtNewsStoryFr: 
        
                  story = new SnrtNewsStoryFr(this, container, storyuser, new StoryCallback() {
                     @Override
