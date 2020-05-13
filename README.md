@@ -21,7 +21,7 @@ Add the dependency in your app `build.gradle`:
 ```
 dependencies 
 {
-	 implementation 'com.github.ismail096:StoryNewsSnrt:1.0.1'
+	implementation 'com.github.ismail096:STNewsLast:V1.0'
 }
 
 
@@ -49,23 +49,50 @@ storyItem .add(new StoryItem.RemoteImage("LinkImage",DurationInSecond,"AvatarJou
 
 storyItem .add(new StoryItem.Video("LinkVideo","AvatarJournal","NameJournal","TimePublication","TitleStory", "Langue Story on a 2 valeur soit fr ou ar"));
 
+       // ici On a 2 Version Soit l'arabe ou francais 
+       
+       si tu veut utiliser le francais donc il faut utiliser la classe SnrtNewsStoryFr: 
+       
+                 story = new SnrtNewsStoryFr(this, container, storyuser, new StoryCallback() {
+                    @Override
+                    public void onNextCalled(@NotNull StoryItem storyItem, int index)
+                    {
 
-      story = new SnrtNewsStory(this, container, storyuser, new StoryCallback() {
-            @Override
-            public void onNextCalled(@NotNull StoryItem storyItem, int index)
-            {
-
-            }
-
-            @Override
-            public void done()
-            {
-
-            }
-        },mProgressDrawable);
+                    }
 
 
-        story.start(Position of user click);
+                    @Override
+                    public void done()
+                    {
+
+
+                    }
+                },mProgressDrawable);
+
+
+                story.start(Position of user click);
+
+     //si tu veut l 'arabe  donc il faut utiliser la classe SnrtNewsStoryAr: 
+     
+     story = new SnrtNewsStoryFr(this, container, storyuser, new StoryCallback() {
+                    @Override
+                    public void onNextCalled(@NotNull StoryItem storyItem, int index)
+                    {
+
+                    }
+
+
+                    @Override
+                    public void done()
+                    {
+
+
+                    }
+                },mProgressDrawable);
+
+
+                story.start(Position of user click);
+     
         
 ```   
 Overview
@@ -91,7 +118,8 @@ import java.util.List;
 public class StoryActivity extends AppCompatActivity
 {
 
-    private SnrtNewsStory story;
+    // choix entre story arabe et francais
+    private SnrtNewsStoryAr story;
     private int mProgressDrawable = R.drawable.white_lightgrey_drawable;
 
     // 1 story
@@ -102,14 +130,11 @@ public class StoryActivity extends AppCompatActivity
     private ArrayList<ArrayList<StoryModel>> storyGlobal= new ArrayList<ArrayList<StoryModel>>();
 
 
+
+    private ConstraintLayout container;
     private ArrayList<StoryModel> storyModels = new ArrayList<>();
     private  StoryModel storyModel ;
     private  StoryModelDetail storyModelDetail ;
-
-
-
-    private ConstraintLayout container;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -145,7 +170,7 @@ public class StoryActivity extends AppCompatActivity
 
     private void getStoryData() {
         AsyncHttpClient client = new AsyncHttpClient(true, 80, 443);
-        client.get("https://snrtnews.aramobile.com/api/stories/fr", new AsyncHttpResponseHandler() {
+        client.get("https://snrtnews.aramobile.com/api/stories/ar", new AsyncHttpResponseHandler() {
             @Override
             public void onSuccess(int statusCode, cz.msebera.android.httpclient.Header[] headers, byte[] responseBody) {
                 String result = new String(responseBody);
@@ -218,7 +243,7 @@ public class StoryActivity extends AppCompatActivity
 
 
 
-                story = new SnrtNewsStory(StoryActivity.this, container, storyuser, new StoryCallback() {
+                story = new SnrtNewsStoryAr(StoryActivity.this, container, storyuser, new StoryCallback() {
                     @Override
                     public void onNextCalled(@NotNull StoryItem storyItem, int index)
                     {
@@ -234,7 +259,7 @@ public class StoryActivity extends AppCompatActivity
                     }
                 },mProgressDrawable);
 
-                // position of user click start
+
                 story.start(0);
 
 
