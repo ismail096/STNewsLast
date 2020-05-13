@@ -51,7 +51,7 @@ storyItem .add(new StoryItem.Video("LinkVideo","AvatarJournal","NameJournal","Ti
 
        // ici On a 2 Version Soit l'arabe ou francais 
        
-      // si tu veut utiliser le francais donc il faut utiliser la classe SnrtNewsStoryFr: 
+      // si tu veut utilise le francais donc il faut utilise la classe SnrtNewsStoryFr: 
        
                  story = new SnrtNewsStoryFr(this, container, storyuser, new StoryCallback() {
                     @Override
@@ -72,9 +72,9 @@ storyItem .add(new StoryItem.Video("LinkVideo","AvatarJournal","NameJournal","Ti
 
                 story.start(Position of user click);
 
-     //si tu veut l 'arabe  donc il faut utiliser la classe SnrtNewsStoryAr: 
+     //si tu veut l 'arabe  donc il faut utilise la classe SnrtNewsStoryAr: 
      
-     story = new SnrtNewsStoryFr(this, container, storyuser, new StoryCallback() {
+     story = new SnrtNewsStoryAr(this, container, storyuser, new StoryCallback() {
                     @Override
                     public void onNextCalled(@NotNull StoryItem storyItem, int index)
                     {
